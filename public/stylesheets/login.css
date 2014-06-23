@@ -1,0 +1,74 @@
+body {
+	background-color: #F2F2F2;
+}
+
+#login-box {
+	background-color: #FCFCFC;
+	border: 2px solid #ECECEC;
+	border-radius: 5px;
+	color: #CCCCCC;
+	height: 280px;
+	margin: -140px 0 0 -150px;
+	position: absolute; left: 50%; top: 50%;
+	width: 300px;
+}
+#login-box h4 {
+	background: url("/images/login.png") no-repeat 40px 0;
+	font-size: 2.5em;
+	font-weight: bold;
+	height: 1em;
+	line-height: 1em;
+	margin: 40px 0 20px;
+	padding-left: 75px;
+}
+#login-box label,
+#login-box button {
+	display: block;
+}
+#login-box label {
+	margin: 10px 0;
+	padding-left: 45px;
+}
+#login-box label input {
+	border: 1px solid #ECECEC;
+	border-radius: 5px;
+	color: #CCCCCC;
+	font-size: 1.4em;
+	height: 2.2em;
+	line-height: 2.2em;
+	width: 160px;
+}
+#login-box label i {
+	background: url("/images/login.png") no-repeat;
+	display: inline-block;
+	height: 1.8em;
+	margin-right: 15px;
+	vertical-align: bottom;
+	width: 1.8em;
+}
+#login-box label .user-icon {
+	background-position: 0 -25px;
+}
+#login-box label .pd-icon {
+	background-position: 0 -45px;
+}
+#submit-btn {
+	background-image:-webkit-gradient(linear,0% 0%, 0% 100%, from(#73A0FB), to(#6292F3)); 
+	background-color: #6899FA;
+	border: 0;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 1.6em;
+	height: 2em;
+	line-height: 2em;
+	margin: 10px auto;
+	opacity: .8;
+	width: 100px;
+}
+#submit-btn:hover {
+	opacity: 1;
+}
+#login-box p {
+	margin: 20px 0;
+	text-align: center;
+}

@@ -1,0 +1,134 @@
+#mask {
+	background: #000;
+	display: none;
+	height: 100%;
+	opacity: .2;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	z-index: 5;
+}
+#page-title {
+	font-size: 4em;
+	margin: 15px 0;
+	text-align: center;
+}
+#add-bill {
+	background-color: #DC0B0B;
+	color: #fff;
+	display: block;
+	font-size: 2.4em;
+	height: 2em;
+	line-height: 2em;
+	margin: 15px auto;
+	opacity: .5;
+	text-align: center;
+	width: 300px;
+}
+#add-bill:hover {
+	opacity: 1;
+	text-decoration: none;
+}
+.bill-form {
+	background-color: #fff;
+	border: 1px solid #aaa;
+	display: none;
+	margin: -100px 0 0 -150px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 300px;
+	z-index: 10;
+}
+.bill-form h4 {
+	font-size: 2em;
+	height: 2em;
+	line-height: 2em;
+	text-align: center;
+}
+.bill-form label {
+	font-size: 1.4em;
+	display: block;
+	padding: 5px 15px;
+}
+.bill-form label span,
+.bill-form label input {
+	display: inline-block;
+}
+.bill-form label span {
+	text-align: right;
+	padding-right: 10px;
+	width: 30%;
+}
+.bill-form label input {
+	border-radius: 2px;
+	height: 2em;
+	line-height: 2em;
+	padding: 0 5px;
+	width: 70%;
+}
+.bill-form button,
+.bill-form .submit {
+	background-color: #AFD0EF;
+	border: 0;
+	display: block;
+	height: 2em;
+	margin: 10px auto;
+	text-align: center;
+	opacity: .8;
+	width: 80px;
+}
+.bill-form .submit {
+	color: #fff;
+	line-height: 2em;
+}
+.bill-form button:hover,
+.bill-form .submit:hover {
+	opacity: 1;
+}
+.bill-form .submit:hover {
+	text-decoration: none;
+}
+#operate-links {
+	margin: 20px auto;
+	width: 800px;
+}
+#operate-links a {
+	display: inline-block;
+	margin-right: 10px;
+}
+#bills {
+	border-spacing: 0;
+	border: 1px solid #aaa;
+	border-collapse: collapse;
+	margin: 20px auto;
+	width: 800px;
+}
+#bills th,
+#bills td {
+	border: 1px solid #E3E7ED;
+	font-size: 1.4em;
+	padding: 5px;
+	text-align: center;
+}
+#bills th {
+	background-color: #89C8F2;
+	background-image:-webkit-gradient(linear,0% 0%, 0% 100%, from(#E1E4EB), to(#A8B8C9)); 
+	color: #fff;
+}
+#bills .title {
+	width: 15%;
+}
+#bills .content {
+	width: 30%;
+}
+#bills .money {
+	width: 15%;
+}
+#bills .date{
+	width: 20%;
+}
+#bills .operate{
+	width: 20%;
+}

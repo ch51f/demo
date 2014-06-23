@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>学习Backbone.js</title>
+	<link rel="stylesheet" type="text/css" href="stylesheets/todos.css">
+</head>
+<body>
+	<div id="todoapp">
+		<header>
+			<h1>Todos</h1>
+			<input type="text" id="new-todo" palceholder="What needs to be done?">
+		</header>
+		<section id="main">
+			<input type="checkbox" id="toggle-all" />
+			<label for="toggle-all">Mark all as complete</label>
+			<ul id="todo-list"></ul>
+		</section>
+		<footer>
+			<a id="clear-completad">Clear completed</a>
+			<div id="todo-count"></div>
+		</footer>
+	</div>
+	<div id="instructions">Double-click to edit a todo.</div>
+	<script type="text/javascript" src="javascripts/require.js" data-main="javascripts/test"></script>
+</body>
+</html>

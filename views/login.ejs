@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta chatset="utf-8" />
+	<title><%= title %></title>
+	<link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+	<link rel="stylesheet" type="text/css" href="stylesheets/login.css" />
+</head>
+<body>
+	<form id="login-box" action="loginin" method="post">	
+		<h4>登录小小记账单</h4>
+		<label for="username"><i class="user-icon"></i><input type="text" id="username"  name="username" /></label>
+		<label for="password"><i class="pd-icon"></i><input type="password" id="password" name="password" /></label>
+		<button id="submit-btn" type="submit">登录</button>
+		<p>本网站暂不开放注册<a href="javascript:;" id="get-account">点击获取测试账号</a></p>
+	</form>
+	<script type="text/javascript" src="javascripts/require.js" data-main="javascripts/login"></script>
+</body>
+</html>
