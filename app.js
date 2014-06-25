@@ -7,6 +7,7 @@ var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
 var html = require('./routes/html');
+var lab = require('./routes/lab');
 var ejs = require('ejs');
 var db = require('./db');
 var login = require('./routes/login');
@@ -62,6 +63,10 @@ app.get('/getTodos', html.getTodos);
 app.post('/todo/create', html.newTodo);
 app.put('/todo/update', html.updateTodo);
 app.delete('/todo/remove', html.removeTodo);
+
+app.get('/lab', lab.index);
+app.get('/lab/main', lab.main);
+app.get('/lab/blindify', lab.blindify);
 
 
 http.createServer(app).listen(app.get('port'), function(){

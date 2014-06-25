@@ -1,0 +1,89 @@
+html, body {
+  font: 10px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-transform-style: preserve-3d;
+  -webkit-perspective: 250;
+  -webkit-animation: body 1s infinite;
+}
+
+@-webkit-keyframes body {
+  100% {
+    -webkit-perspective: 450;
+  }
+}
+
+h1 {
+  font-size: 4em;
+  font-weight: bold;
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  margin: 0 0 0 -200px;
+  text-align: center;
+  width: 400px;
+}
+
+.circle,
+i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -5px;
+  margin-top: -5px;
+}
+i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #000;
+}
+
+.click{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -50px 0 0 -50px;
+	height: 100px;
+	line-height: 100px;
+	text-align: center;
+	width: 100px;
+}
+.click a{
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+	text-decoration: none;
+	color: #000;
+	-webkit-animation: click1 1s 0 infinite;
+}
+@-webkit-keyframes click1 {
+	100% {
+		opacity: .1;
+	}
+}
+.keyframes(@name) {
+	@-webkit-keyframes @name {
+		.-frames(-webkit-);
+	}
+}
+.generate-circle(4);
+.generate-circle(@n, @i: 1) when (@i =< @n) {
+	.generate-circle-i(20);
+	.generate-circle-i(@m, @j: 1) when (@j =< @m) {
+		.circle:nth-child(@{i}) i:nth-child(@{j}) {
+			-webkit-transform: rotate(18deg * @j) translate3d(4em, 0, ((3em * @i) - 3em));
+			-webkit-animation: "ani@{i}-@{j}" 1s (-0.05s * @j) infinite;
+		}
+		& {
+			.keyframes("ani@{i}-@{j}");.-frames(@-...) {
+				100% {
+					@{-}transform: rotate(18deg * @j) translate3d(4em, 0, ((3em * @i) - 6em));
+				}
+			}
+		}
+		.generate-circle-i(@m, (@j + 1));
+	}
+	.generate-circle(@n, (@i + 1));
+}

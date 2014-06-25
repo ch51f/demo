@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title><%= title %></title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/lab/blindify.css">
+	<style type="text/css">
+		body {
+			background-color: #000;
+		}
+		#blindify {
+			margin: -300px 0 0 -500px;
+			position: absolute;top: 50%;left: 50%;
+		}
+	</style>
+</head>
+<body>
+	<section id="blindify">
+		<ul>
+			<% for(var i = 0; i < 6; i++) { %>
+				<li><img src="/images/blindify/<%= i + 1 %>.jpg" alt=""></li>
+			<% } %>
+		</ul>
+	</section>
+	<script type="text/javascript" src="/javascripts/require.js" data-main="/javascripts/lab/blindify-m"></script>
+</body>
+</html>
