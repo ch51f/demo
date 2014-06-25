@@ -1,0 +1,26 @@
+* {
+	margin: 0;
+	padding: 0;
+	border: 0 none;
+}
+.carousel {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+.carousel ul,
+.carousel ul li {
+	list-style: none;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.carousel ul li.active {
+	z-index: 10;
+}
+.carousel img {
+	height: 99.8%;
+	width: 100%;
+}

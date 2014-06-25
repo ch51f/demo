@@ -16,3 +16,9 @@ exports.blindify = function (req, res, next) {
 		title : 'Ch51F\'s Blindify'
 	})
 }
+exports.carousel = function (req, res, next) {
+	res.render('lab/carousel',{
+		layout : '',
+		title : 'Ch51F\'s Carousel'
+	})
+}
