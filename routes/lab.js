@@ -22,3 +22,9 @@ exports.carousel = function (req, res, next) {
 		title : 'Ch51F\'s Carousel'
 	})
 }
+exports.dialog = function (req, res, next) {
+	res.render('lab/dialog',{
+		layout : '',
+		title : 'Ch51F\'s Dialog'
+	})
+}

@@ -1,0 +1,17 @@
+.dialog {
+	background-color: #fff;
+	border: 1px solid #999;
+	border-radius: 5px;
+	box-sizing: border-box;
+	box-shadow: 3px 3px 3px 3px #666;
+	height: 350px;
+	margin: -175px 0 0 -200px;
+	position: absolute; top: 50%; left: 50%;
+	width: 400px;
+	z-index: 20;
+}
+.dialog .hd {
+	background: #DDD;
+	height: 30px;
+	line-height: 30px;
+}

@@ -68,6 +68,7 @@ app.get('/lab', lab.index);
 app.get('/lab/main', lab.main);
 app.get('/lab/blindify', lab.blindify);
 app.get('/lab/carousel', lab.carousel);
+app.get('/lab/dialog', lab.dialog);
 
 
 http.createServer(app).listen(app.get('port'), function(){

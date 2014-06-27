@@ -1,0 +1,13 @@
+.mask {
+	background: #000;
+	display: block;
+	height: 100%;
+	position: absolute; left: 0; top: 0;
+	opacity: .3;
+	width: 100%;
+	z-index: 10;
+}
+.page {
+	margin: 0 auto;
+	width: 960px;
+}
