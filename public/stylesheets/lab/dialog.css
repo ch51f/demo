@@ -15,3 +15,18 @@
 	height: 30px;
 	line-height: 30px;
 }
+.dialog .hd h4 {
+	padding: 0 10px;
+	line-height: 30px;
+}
+.dialog .bd {
+	padding: 10px;
+}
+.dialog .close {
+	color: #333;
+	display: block;
+	position: absolute; top: 5px; right: 10px;
+}
+.dialog .close:hover {
+	text-decoration: none;
+}

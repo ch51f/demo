@@ -2,10 +2,12 @@ define(["jquery"], function($) {
 	$.fn.fDialog = function(options) {
 		var defaults = {
 			mask : true,
-			maskClose : false,
+			maskClose : true,
 			maskColor : "#000",
-			height : "150px",
-			width : "200px"
+			height : "300px",
+			width : "500px",
+			content : "this is dialog content",
+			title : "dialog"
 		};
 
 		var $el = $(this);
@@ -53,16 +55,24 @@ define(["jquery"], function($) {
 						var dialogHdHtml = "<div class='hd'></div>";
 						var dialogBdHtml = "<div class='bd'></div>";
 						var dialogFtHtml = "<div class='ft'></div>";
-						$dialog.append(dialogHdHtml).append(dialogBdHtml).append(dialogFtHtml);
+						$dialog.append(dialogHdHtml).append(dialogBdHtml).append(dialogFtHtml).append("<a class='close' href='javascript:;'>x</a>");
+						var $close = $(".close", $dialog);
+						var $hd = $(".hd", $dialog);
+						var $bd = $(".bd", $dialog);
+						$hd.append("<h4>" + settings.title + "</h4>");
+						$bd.append(settings.content);
+						$close.click(function () {
+							dialog.close();
+						});
 						dialog.drag();
-					})
+					});
 				});
 			},
 			drag : function() {
 				var $dialog = $("#dialog");
 				var $dialogHd = $("#dialog .hd");
 				var drag = false;
-				var client, offset, moveClient;
+				var dragParams, move;
 				$dialogHd.bind("mousedown", function (e) {
 					drag = true;
 					dragParams = {
@@ -70,25 +80,27 @@ define(["jquery"], function($) {
 						dragY : e.clientY - $dialog.position().top
 					}
 					$(this).css({'cursor':'move'});
+					if(this.setCapture) {  
+						this.setCapture();  
+					} 	
 				}).bind("mousemove", function (e) {
-					var move = {
-						moveX : e.clientX - dragParams.dragX,
-						moveY : e.clientY - dragParams.dragY
-					}
-					alert(move.moveX)
-					if(move.moveX < 0) {
-						move.moveX = 0;
-					}
-					if(move.moveX > ($(window).width() - settings.width)) {
-						move.moveX = ($(window).width() - settings.width);
-					}
-					if(move.moveY < 0) {
-						move.moveY = 0;
-					}
-					if(move.moveY > ($(window).height() - settings.height)) {
-						move.moveY = ($(window).height() - settings.height);
-					}
 					if(drag) {
+						move = {
+							moveX : e.clientX - dragParams.dragX,
+							moveY : e.clientY - dragParams.dragY
+						}
+						if(move.moveX - parseFloat(settings.width) / 2 < 0) {
+							move.moveX = parseFloat(settings.width) / 2;
+						}
+						if(move.moveX + parseFloat(settings.width) / 2 > $(window).	width()) {
+							move.moveX = ($(window).width() - parseFloat(settings.width) / 2);
+						}
+						if(move.moveY - parseFloat(settings.height) / 2 < 0) {
+							move.moveY = parseFloat(settings.height) / 2;
+						}
+						if(move.moveY + parseFloat(settings.height) / 2 > $(window)	.height()) {
+							move.moveY = ($(window).height() - parseFloat(settings.height) / 2);
+						}
 						$dialog.css({
 							left : move.moveX,
 							top : move.moveY
@@ -96,7 +108,13 @@ define(["jquery"], function($) {
 					}
 				}).bind("mouseup", function() {
 					drag = false;
-					$(this).css({'cursor': "default"})
+					$(this).css({'cursor': "default"});
+					if(this.releaseCapture) {
+						this.releaseCapture();
+					}
+				}).bind("mouseleave", function() {
+					drag = false;
+					$(this).css({'cursor': "default"});
 				});
 			},
 			close : function() {
@@ -111,83 +129,3 @@ define(["jquery"], function($) {
 		dialog.init();
 	}
 });
-
-//拖拽方法
-var DragAndDrop = function() {
-	var _clientWidth;
-	var _clientHeight;
-	var _controlObj;
-	var _dragObj;
-	var _flag = false; 
-	var _dragObjCurrentLocation;
-	var _mouseLastLocation;
-	var getElementDocument = function(element) {
-		return element.ownerDocument || element.document;
-	};
-	var dragMouseDownHandler = function(evt) {
-		if (_dragObj) {
-			evt = evt || window.event;
-			_clientWidth = document.body.clientWidth;
-			_clientHeight = document.documentElement.scrollHeight;
-			$("#jd_dialog_m_b_1").css("display", "");
-			_flag = true;
-			_dragObjCurrentLocation = {
-				x : $(_dragObj).offset().left,
-				y : $(_dragObj).offset().top
-			};
-			_mouseLastLocation = {
-				x : evt.screenX,
-				y : evt.screenY
-			};
-			$(document).bind("mousemove", dragMouseMoveHandler);
-			$(document).bind("mouseup", dragMouseUpHandler);
-			if (evt.preventDefault) {
-				evt.preventDefault();
-			} else {
-				evt.returnValue = false;
-			}
-		}
-	};
-	var dragMouseMoveHandler = function(evt) {
-		if (_flag) {
-			evt = evt || window.event;
-			var _mouseCurrentLocation = {
-				x : evt.screenX,
-				y : evt.screenY
-			};
-			_dragObjCurrentLocation.x = _dragObjCurrentLocation.x
-					+ (_mouseCurrentLocation.x - _mouseLastLocation.x);
-			_dragObjCurrentLocation.y = _dragObjCurrentLocation.y
-					+ (_mouseCurrentLocation.y - _mouseLastLocation.y);
-			_mouseLastLocation = _mouseCurrentLocation;
-			$(_dragObj).css("left", _dragObjCurrentLocation.x + "px");
-			$(_dragObj).css("top", _dragObjCurrentLocation.y + "px");
-			if (evt.preventDefault) {
-				evt.preventDefault();
-			} else {
-				evt.returnValue = false;
-			}
-		}
-	};
-	var dragMouseUpHandler = function(evt) {
-		if (_flag) {
-			evt = evt || window.event;
-			$("#jd_dialog_m_b_1").css("display", "none");
-			cleanMouseHandlers();
-			_flag = false;
-		}
-	};
-	var cleanMouseHandlers = function() {
-		if (_controlObj) {
-			$(_controlObj.document).unbind("mousemove");
-			$(_controlObj.document).unbind("mouseup");
-		}
-	};
-	return {
-		Register : function(dragObj, controlObj) {
-			_dragObj = dragObj;
-			_controlObj = controlObj;
-			$(_controlObj).bind("mousedown", dragMouseDownHandler);
-		}
-	}        ;
-}();
