@@ -5,9 +5,10 @@ requirejs.config({
 		dialog : "/javascripts/lab/dialog"
 	}
 });
-requirejs(["jquery","dialog"], function($) {
+requirejs(["jquery","dialog","drag"], function($) {
 	$(function() {
 		$('a').fDialog({
 		});
+		$("#drag").fDrag();
 	})
 });

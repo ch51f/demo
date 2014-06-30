@@ -1,0 +1,65 @@
+body {
+	position: relative;
+}
+.header {
+	height: 460px;
+}
+.header .bg {
+	background-image: -webkit-linear-gradient(45deg,#020031,#6d3353);
+	height: 460px;
+	width: 100%;
+	position: absolute; left: 0; top: 0;
+}
+.header .bg:after {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: url(/images/hd.png) repeat center center;
+	opacity: .4
+}
+.caption {
+	height: 460px;
+	z-index: 10;
+	position: absolute;
+	left: 15%;
+	right: 15%;
+	text-align: center;
+}
+.caption h1 {
+	padding: 100px;
+	height: 130px;
+	line-height: 130px;
+	color: #fff;
+	margin: 0;
+	font-size: 500%;
+	font-weight: 900;
+}
+.sidebar {
+	margin-top: 20px;
+	padding-left: 50px;
+}
+.sidebar .nav {
+	margin: 0;
+	padding: 0;
+}
+.sidebar a {
+	color: #999;
+}
+.sidebar .active>a{
+	color: #333;
+}
+.sidebar li {
+	list-style: none;
+}
+.sidebar li .nav{
+	margin-left: 20px;
+}
+.sidebar.affix {
+	position: fixed;
+	margin-top: 0;
+	top: 20px;
+}

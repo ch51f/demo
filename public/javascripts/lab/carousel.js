@@ -9,11 +9,15 @@ define(["jquery"], function($) {
 	}
 	$.carousel = function(element, userOptions) {
 		var $el = $(element);
-		$el.addClass("carousel");
+		$el.addClass("carousel").show().find("li").andSelf().css({
+			width : options.width,
+			height : options.height
+		});
 		$("ul li", $el).each(function() {
 			var $this = $(this)
 			$this.css({
 				top: -options.height,
+				left: 0
 			})
 			imgList.push($this);
 		})
