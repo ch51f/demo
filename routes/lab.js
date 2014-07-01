@@ -1,15 +1,3 @@
-exports.index = function (req, res, next) {
-	res.render('lab/index',{
-		layout : '',
-		title : 'CH51F\'s Laboratory'
-	})
-}
-exports.main = function (req, res, next) {
-	res.render('lab/main',{
-		layout : '',
-		title : 'CH51F\'s Laboratory'
-	})
-}
 exports.blindify = function (req, res, next) {
 	res.render('lab/blindify',{
 		layout : '',

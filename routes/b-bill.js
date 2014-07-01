@@ -3,10 +3,10 @@ var Bill = db.Bill;
 var utils = require('connect').utils;
 
 
-exports.demo = function(req, res, next){
-	res.render('demo', {
+exports.index = function(req, res, next){
+	res.render('bill/b-bills', {
 		title : '小小记账单-实验室',
-		layout : "layout"
+		layout : "bill/layout"
 	});
 };
 exports.bills = function(req, res, next) {

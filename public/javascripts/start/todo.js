@@ -1,12 +1,11 @@
 requirejs.config({
 
-	baseUrl: 'javascripts/lib',
+	baseUrl: '/javascripts/lib',
 
 	paths: {
 		jquery: "jquery",
-		myM: "../my/myModel",
-		myTest: "../my/test",
-		todoTemplate: "../template/todo"
+		todoModel: "/javascripts/backbone/todo",
+		todoTemplate: "/javascripts/template/todo"
 	},
 
 	shim: {
@@ -24,5 +23,5 @@ requirejs.config({
 	}
 });
 
-requirejs(["myTest"], function(T) {
+requirejs(["todoModel"], function() {
 });

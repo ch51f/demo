@@ -1,11 +1,10 @@
 var db = require("../db");
 var Todo = db.Todo;
-var utils = require('connect').utils;
 
 
-exports.test = function(req, res, next){
-	res.render('test', {
-		layout: ""
+exports.todos = function(req, res, next){
+	res.render('todo/todos', {
+		layout: false
 	});
 };
 exports.getTodos = function(req, res, next){

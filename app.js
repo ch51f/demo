@@ -4,13 +4,19 @@
  */
 
 var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
-var html = require('./routes/html');
-var lab = require('./routes/lab');
+// var routes = require('./routes');
+var fch = require("./routes/fch");
+var todo = require('./routes/todo');
+
+var login = require('./routes/login');
+var bill = require('./routes/bill');
+
+var bBill = require('./routes/b-bill');
+// var lab = require('./routes/lab');
+
+
 var ejs = require('ejs');
 var db = require('./db');
-var login = require('./routes/login');
 var http = require('http');
 var path = require('path');
 var partials = require('express-partials');
@@ -38,38 +44,39 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
-app.get('/payin', routes.payin);
-app.get('/payout', routes.payout);
-app.post('/create', routes.create);
-app.post('/update/:id', routes.update);
-app.get('/destroy/:id', routes.destroy);
-app.get('/login', login.login);
-app.post('/loginin', login.loginin);
-
-// app.get('/dall', routes.destroyAll);
-// app.get('/uall', routes.updateAll);
-app.get('/demo', user.demo);
-app.get('/bills/get', user.bills);
-app.post('/bill/create', user.billCreate);
-app.put('/bill/update', user.billUpdate); 
-app.delete('/bill/remove', user.billRemove); 
-
 // app.engine('.html', ejs.__express);
 // app.set('view engine', 'html');
+// app.get('/lab', lab.laboratory);
+// app.get('/lab/blindify', lab.blindify);
+// app.get('/lab/carousel', lab.carousel);
+// app.get('/lab/dialog', lab.dialog);
+// app.get('/lab/drag', lab.drag);
 
-app.get('/test', html.test);
-app.get('/getTodos', html.getTodos);
-app.post('/todo/create', html.newTodo);
-app.put('/todo/update', html.updateTodo);
-app.delete('/todo/remove', html.removeTodo);
+app.get('/', fch.welcome);
+app.get("/index", fch.index);
+app.get("/lab", fch.laboratory);
 
-app.get('/lab', lab.index);
-app.get('/lab/main', lab.main);
-app.get('/lab/blindify', lab.blindify);
-app.get('/lab/carousel', lab.carousel);
-app.get('/lab/dialog', lab.dialog);
-app.get('/lab/drag', lab.drag);
+app.get('/backbone/todos', todo.todos);
+app.get('/getTodos', todo.getTodos);
+app.post('/todo/create', todo.newTodo);
+app.put('/todo/update', todo.updateTodo);
+app.delete('/todo/remove', todo.removeTodo);
+
+app.get('/bills/login', login.login);
+app.post('/bills/loginin', login.loginin);
+
+app.get('/bills', bill.bills);
+app.get('/bills/payin', bill.payin);
+app.get('/bills/payout', bill.payout);
+app.post('/bills/create', bill.create);
+app.post('/bills/update/:id', bill.update);
+app.get('/bills/destroy/:id', bill.destroy);
+
+app.get('/b-bills', bBill.index);
+app.get('/b-bills/get', bBill.bills);
+app.post('/b-bill/create', bBill.billCreate);
+app.put('/b-bill/update', bBill.billUpdate); 
+app.delete('/b-bill/remove', bBill.billRemove); 
 
 
 http.createServer(app).listen(app.get('port'), function(){

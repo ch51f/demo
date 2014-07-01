@@ -22,8 +22,8 @@ define(["jquery"], function($) {
 						e.preventDefault();
 						if(settings.mask) {
 							var maskHtml = "<div id='mask'></div>",
-								wWidth = $(window).width(),
-								wHeight = $(window).height();
+								wWidth = $(document).width(),
+								wHeight = $(document).height();
 							$("body").prepend(maskHtml);
 							var $mask = $("#mask");
 							$mask.css({
@@ -72,38 +72,40 @@ define(["jquery"], function($) {
 				var $dialog = $("#dialog");
 				var $dialogHd = $("#dialog .hd");
 				var drag = false;
-				var dragParams, move;
+				var dragParams = {
+					initX : null,
+					initY : null,
+					moveX : null,
+					moveY : null
+				};
 				$dialogHd.bind("mousedown", function (e) {
 					drag = true;
-					dragParams = {
-						dragX : e.clientX - $dialog.position().left,
-						dragY : e.clientY - $dialog.position().top
-					}
+					dragParams.initX = e.clientX - $dialog.position().left;
+					dragParams.initY = e.clientY - $dialog.position().top;
 					$(this).css({'cursor':'move'});
 					if(this.setCapture) {  
 						this.setCapture();  
 					} 	
 				}).bind("mousemove", function (e) {
 					if(drag) {
-						move = {
-							moveX : e.clientX - dragParams.dragX,
-							moveY : e.clientY - dragParams.dragY
+						dragParams.moveX = e.clientX - dragParams.initX;
+						dragParams.moveY = e.clientY - dragParams.initY;
+
+						if(dragParams.moveX - parseFloat(settings.width) / 2 < 0) {
+							dragParams.moveX = parseFloat(settings.width) / 2;
 						}
-						if(move.moveX - parseFloat(settings.width) / 2 < 0) {
-							move.moveX = parseFloat(settings.width) / 2;
+						if(dragParams.moveX + parseFloat(settings.width) / 2 > $(document).width()) {
+							dragParams.moveX = ($(document).width() - parseFloat(settings.width) / 2);
 						}
-						if(move.moveX + parseFloat(settings.width) / 2 > $(window).	width()) {
-							move.moveX = ($(window).width() - parseFloat(settings.width) / 2);
+						if(dragParams.moveY - parseFloat(settings.height) / 2 < 0) {
+							dragParams.moveY = parseFloat(settings.height) / 2;
 						}
-						if(move.moveY - parseFloat(settings.height) / 2 < 0) {
-							move.moveY = parseFloat(settings.height) / 2;
-						}
-						if(move.moveY + parseFloat(settings.height) / 2 > $(window)	.height()) {
-							move.moveY = ($(window).height() - parseFloat(settings.height) / 2);
+						if(dragParams.moveY + parseFloat(settings.height) / 2 > $(document).height()) {
+							dragParams.moveY = ($(document).height() - parseFloat(settings.height) / 2);
 						}
 						$dialog.css({
-							left : move.moveX,
-							top : move.moveY
+							left : dragParams.moveX,
+							top : dragParams.moveY
 						});
 					}
 				}).bind("mouseup", function() {

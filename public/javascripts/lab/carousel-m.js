@@ -7,6 +7,8 @@ requirejs.config({
 });
 requirejs(["jquery","carousel"], function($) {
 	$(function() {
-		$('#carousel').carousel();
+		$('#carousel').carousel({
+			direction : "right"
+		});
 	})
 });

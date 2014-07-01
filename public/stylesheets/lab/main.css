@@ -30,9 +30,7 @@ body {
 	text-align: center;
 }
 .caption h1 {
-	padding: 100px;
-	height: 130px;
-	line-height: 130px;
+	padding-top: 180px;
 	color: #fff;
 	margin: 0;
 	font-size: 500%;
@@ -61,5 +59,5 @@ body {
 .sidebar.affix {
 	position: fixed;
 	margin-top: 0;
-	top: 20px;
+	top: 60px;
 }

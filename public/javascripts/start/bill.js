@@ -1,6 +1,6 @@
 requirejs.config({
 
-	baseUrl: 'javascripts/lib',
+	baseUrl: '/javascripts/lib',
 
 	paths: {
 		jquery: "jquery"
@@ -28,7 +28,7 @@ requirejs(["jquery"], function($) {
 			if(!(!!$(this).data("id"))) {
 				return false;
 			}
-			$updateForm.attr("action","update/" + $(this).data("id"));
+			$updateForm.attr("action","bills/update/" + $(this).data("id"));
 			$updateForm.find("input[name='bill_title']").attr("value", $(this).data("title"));
 			$updateForm.find("input[name='bill_content']").attr("value", $(this).data("content"));
 			$updateForm.find("input[name='bill_flg']").attr("value", ($(this).data("flg") == "1")? "收入" : "支出");
