@@ -1,13 +1,13 @@
 requirejs.config({
 
-	baseUrl: 'javascripts/lib',
+	baseUrl: '/javascripts/lib',
 
 	paths: {
 		jquery: "jquery",
-		myM: "../my/myModel",
-		myDemo: "../my/demo",
-		date: "../my/date",
-		bill: "../template/bill"
+		myM: "/javascripts/my/myModel",
+		bill: "/javascripts/backbone/bill",
+		date: "/javascripts/my/date",
+		billTemplate: "/javascripts/template/bill"
 	},
 
 	shim: {
@@ -25,5 +25,5 @@ requirejs.config({
 	}
 });
 
-requirejs(["myDemo"], function(D) {
+requirejs(["bill"], function() {
 });

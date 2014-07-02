@@ -1,10 +1,10 @@
-define(["backbone", "bill", "date"], function (Backbone, T, D) {
+define(["backbone", "billTemplate", "date"], function (Backbone, T, D) {
 	var Bill = Backbone.Model.extend({
 		methodToURL: {
-    		'read': '/bill/get',
-    		'create': '/bill/create',
-    		'update': '/bill/update',
-			'delete': '/bill/remove'
+    		'read': '/backbone/bill/get',
+    		'create': '/backbone/bill/create',
+    		'update': '/backbone/bill/update',
+			'delete': '/backbone/bill/remove'
 		},
 		sync: function(method, model, options) {
 			options = options || {};
@@ -28,10 +28,10 @@ define(["backbone", "bill", "date"], function (Backbone, T, D) {
 	var BillList = Backbone.Collection.extend({
 		model: Bill,
 		methodToURL: {
-    		'read': '/bills/get',
-    		'create': '/bills/create',
-    		'update': '/bills/update',
-			'delete': '/bills/remove'
+    		'read': '/backbone/bills/get',
+    		'create': '/backbone/bills/create',
+    		'update': '/backbone/bills/update',
+			'delete': '/backbone/bills/remove'
 		},
 		sync: function(method, model, options) {
 			options = options || {};

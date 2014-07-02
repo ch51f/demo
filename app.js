@@ -12,7 +12,7 @@ var login = require('./routes/login');
 var bill = require('./routes/bill');
 
 var bBill = require('./routes/b-bill');
-// var lab = require('./routes/lab');
+var lab = require('./routes/lab');
 
 
 var ejs = require('ejs');
@@ -46,11 +46,6 @@ if ('development' == app.get('env')) {
 
 // app.engine('.html', ejs.__express);
 // app.set('view engine', 'html');
-// app.get('/lab', lab.laboratory);
-// app.get('/lab/blindify', lab.blindify);
-// app.get('/lab/carousel', lab.carousel);
-// app.get('/lab/dialog', lab.dialog);
-// app.get('/lab/drag', lab.drag);
 
 app.get('/', fch.welcome);
 app.get("/index", fch.index);
@@ -72,11 +67,16 @@ app.post('/bills/create', bill.create);
 app.post('/bills/update/:id', bill.update);
 app.get('/bills/destroy/:id', bill.destroy);
 
-app.get('/b-bills', bBill.index);
-app.get('/b-bills/get', bBill.bills);
-app.post('/b-bill/create', bBill.billCreate);
-app.put('/b-bill/update', bBill.billUpdate); 
-app.delete('/b-bill/remove', bBill.billRemove); 
+app.get('/backbone/bills', bBill.index);
+app.get('/backbone/bills/get', bBill.bills);
+app.post('/backbone/bill/create', bBill.billCreate);
+app.put('/backbone/bill/update', bBill.billUpdate); 
+app.delete('/backbone/bill/remove', bBill.billRemove); 
+
+app.get('/lab/blindify', lab.blindify);
+app.get('/lab/carousel', lab.carousel);
+app.get('/lab/dialog', lab.dialog);
+app.get('/lab/drag', lab.drag);
 
 
 http.createServer(app).listen(app.get('port'), function(){

@@ -4,6 +4,10 @@ var utils = require('connect').utils;
 
 
 exports.index = function(req, res, next){
+	if(req.cookies.user_id){
+		res.cookie('user_id', "test1");
+		res.redirect("/backbone/bills");
+	}
 	res.render('bill/b-bills', {
 		title : '小小记账单-实验室',
 		layout : "bill/layout"
