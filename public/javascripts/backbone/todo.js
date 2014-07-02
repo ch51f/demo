@@ -19,7 +19,7 @@ define(["backbone", "todoTemplate"], function (Backbone, T) {
 			return {
 				title: "empty todo...",
 				time: "",
-				order: Todos.nextOrder(),
+				t_order: Todos.nextOrder(),
 				done: false
 			}
 		},
@@ -38,9 +38,9 @@ define(["backbone", "todoTemplate"], function (Backbone, T) {
 		},
 		nextOrder: function() {
 			if(!this.length) return 1;
-			return this.last().get("order") + 1;
+			return this.last().get("t_order") + 1;
 		},
-		comparator: "order"
+		comparator: "t_order"
 	});
 	var Todos = new TodoList;
 	var TodoView = Backbone.View.extend({
@@ -119,11 +119,13 @@ define(["backbone", "todoTemplate"], function (Backbone, T) {
 			Todos.each(this.getId, this);
 		},
 		getId: function(todo) {
-			todo.set("id", todo.get("_id"));
+			todo.set("id", todo.get("id"));
 		},
 		addOne: function(todo) {
-			var view = new TodoView({model: todo});
-			this.$("#todo-list").append(view.render().el);
+			if(todo.get("id")) {
+				var view = new TodoView({model: todo});
+				this.$("#todo-list").append(view.render().el);
+			}
 		},
 		addAll: function() {
 			Todos.each(this.addOne, this);
@@ -133,7 +135,6 @@ define(["backbone", "todoTemplate"], function (Backbone, T) {
 			if(!this.input.val()) return;
 			Todos.create({title: this.input.val(), time: ""});
 			Todos.fetch();
-			this.$("#todo-list").empty();
 			this.input.val("");
 		},
 		clearCompleted: function() {
