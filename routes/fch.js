@@ -13,6 +13,11 @@ exports.index = function (req, res, next) {
 		}		
 	})
 }
+exports.about = function (req, res) {
+	res.render('about/about', {
+		layout : false
+	})
+}
 exports.laboratory = function (req, res, next) {
 	res.render('laboratory',{
 		title : 'CH51F\'s Laboratory',

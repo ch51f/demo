@@ -1,0 +1,22 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+li {
+	list-style: none;
+}
+img {
+	height: 100%;
+	width: 100%;
+}
+.gallery ul li {
+	float: left;
+	height: 150px;
+	width: 150px;
+	margin: 5px;
+}
+.gallery ul li a{
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+}

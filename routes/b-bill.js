@@ -1,6 +1,5 @@
 var db = require("../db");
 var Bill = db.Bill;
-var utils = require('connect').utils;
 
 
 exports.index = function(req, res, next){

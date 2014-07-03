@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -10,15 +9,19 @@ var fch = require("./routes/fch");
 // var todo = require('./routes/todo');
 var todo = require('./routes/pg-todo');
 
-var login = require('./routes/login');
-var bill = require('./routes/bill');
+// var login = require('./routes/login');
+var login = require('./routes/pg-login');
 
-var bBill = require('./routes/b-bill');
+// var bill = require('./routes/bill');
+var bill = require('./routes/pg-bill');
+
+
+// var bBill = require('./routes/b-bill');
+var bBill = require('./routes/pg-b-bill');
+
 var lab = require('./routes/lab');
 
 
-var ejs = require('ejs');
-var db = require('./db');
 var http = require('http');
 var path = require('path');
 var partials = require('express-partials');
@@ -52,6 +55,7 @@ if ('development' == app.get('env')) {
 app.get('/', fch.welcome);
 app.get("/index", fch.index);
 app.get("/lab", fch.laboratory);
+app.get("/about", fch.about);
 
 app.get('/backbone/todos', todo.todos);
 app.get('/getTodos', todo.getTodos);
@@ -79,6 +83,7 @@ app.get('/lab/blindify', lab.blindify);
 app.get('/lab/carousel', lab.carousel);
 app.get('/lab/dialog', lab.dialog);
 app.get('/lab/drag', lab.drag);
+app.get('/lab/gallery', lab.gallery);
 
 
 http.createServer(app).listen(app.get('port'), function(){

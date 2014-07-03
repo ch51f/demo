@@ -22,3 +22,9 @@ exports.drag = function (req, res, next) {
 		title : 'CH51F\'s Drag'
 	})
 }
+exports.gallery = function (req, res, next) {
+	res.render('lab/gallery',{
+		layout : false,
+		title : 'CH51F\'s Gallery'
+	})
+}

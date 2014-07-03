@@ -85,14 +85,16 @@ define(["backbone", "billTemplate", "date"], function (Backbone, T, D) {
 			}
 		},
 		getId: function(bill) {
-			bill.set("id", bill.get("_id"));
+			bill.set("id", bill.get("id"));
 			if(bill.get("date")) {
 				bill.set("dateStr", new Date(bill.get("date")).Format("YYYY-MM-DD"));
 			}
 		},
 		addOne: function(bill) {
-			var view = new BillView({model: bill});
-			this.$("#bills tbody").append(view.render().el);
+			if(bill.get("id")) {
+				var view = new BillView({model: bill});
+				this.$("#bills tbody").append(view.render().el);
+			}
 		},
 		addAll: function() {
 			Bills.each(this.addOne, this);
@@ -146,7 +148,7 @@ define(["backbone", "billTemplate", "date"], function (Backbone, T, D) {
 		createBill: function() {
 			Bills.create({title: this.inputTitle.val(), content: this.inputContent.val(), bill_flg: this.inputFlg.val(), money: this.inputMoney.val(), dateStr: this.inputDate.val()});
 			Bills.fetch();
-			$("#bills tbody").find("td").parent().remove();
+			// $("#bills tbody").find("td").parent().remove();
 			this.$el.remove();
 			$("#mask").hide();
 		},

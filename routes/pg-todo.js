@@ -17,7 +17,6 @@ exports.removeTodo = function(req, res, next){
 	Client.query("DELETE FROM todo WHERE id=" + req.param("id") + ";");
 };
 exports.newTodo = function(req, res, next){
-	console.log("ad");
 	Client.query("INSERT INTO todo (title, t_order, done) VALUES ('" + req.param("title") + "', " + req.param("t_order") + ", " + req.param("done") + ");");
 };
 exports.updateTodo = function(req, res, next) {

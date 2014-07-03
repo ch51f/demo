@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>gallery</title>
+	<link rel="stylesheet" href="/stylesheets/lab/gallery.css">
+</head>
+<body>
+	<section class="gallery">
+		<ul id="gallery">
+			<% for(var i = 0; i < 6; i++) { %>
+				<li><a href="javascript:;"><img src="/images/blindify/<%= i + 1 %>.jpg" alt=""></a></li>
+			<% } %>
+		</ul>
+	</section>
+	<script type="text/javascript" src="/javascripts/require.js" data-main="/javascripts/start/start-gallery"></script>
+</body>
+</html>
