@@ -31,32 +31,32 @@ define(["jquery"], function($) {
 			},
 			start : function() {
 				this.structure();
-				this.getWidth();
+				this.resize();
                 this.closeSlide();
 			},
 			build : function() {
 				this.loadContent(index);
                 this.addCaption();
                 this.addDesc(); //description
-                this.counter();
-                this.slideTo();
-                this.buildThumbnail();
-                this.keyPress();
-                if(settings.index) {
-                    this.slide(settings.index);
-                }
-                else {
-                    this.slide(index);
-                }
-                this.touch();
-                this.enableTouch();
+                // this.counter();
+                // this.slideTo();
+                // this.buildThumbnail();
+                // this.keyPress();
+                // if(settings.index) {
+                //     this.slide(settings.index);
+                // }
+                // else {
+                //     this.slide(index);
+                // }
+                // this.touch();
+                // this.enableTouch();
 
-                setTimeout(function () {
-                    $gallery.addClass('opacity');
-                }, 50);	
-			}
+                // setTimeout(function () {
+                //     $gallery.addClass('opacity');
+                // }, 50);	
+			},
 			structure : function() {
-				$("body").append(html).addClass("f-gallery-wrap");
+				$("body").append(html);
 				$fGalleryWarp = $("#f-gallery-wrap");
 				$fGallery = $("#f-gallery");
 				$fSlider = $("#f-gallery-slider", $fGallery);
@@ -66,6 +66,36 @@ define(["jquery"], function($) {
 					galleryList += "<div class='f-gallery-slide'></div>";
 				})
 				$fSlider.append(galleryList);
+			},
+			resize : function() {
+				var resizeGallery = function() {
+					var gHeight = $(window).height();
+					var gWidth = $(window).width();
+					$fGalleryWarp.css({
+						height : gHeight,
+						width : gWidth
+					});
+				}
+				$(window).on("resize", resizeGallery);
+			},
+			closeSlide : function() {
+				$fGallery.on("click", function (e) {
+					if(e.target.id === "f-gallery") {
+						$fGalleryWarp.remove();
+					}
+				})
+			},
+			loadContent : function() {
+				var src = $($children[index]).data("src");
+				$fGallery.append("<img src='" + src + "' >");
+			},
+			addCaption : function() {
+				var caption = $($children[index]).data("cap");
+				$fGallery.append("<h4>" + caption + "</h4>");
+			},
+			addDesc : function() {
+				var description = $($children[index]).data("des");
+				$fGallery.append("<p>" + description + "</p>");
 			}
 		}
 		gallery.init();
