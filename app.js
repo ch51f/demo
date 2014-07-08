@@ -21,6 +21,8 @@ var bBill = require('./routes/pg-b-bill');
 
 var lab = require('./routes/lab');
 
+var demo = require('./routes/demo');
+
 
 var http = require('http');
 var path = require('path');
@@ -55,6 +57,7 @@ if ('development' == app.get('env')) {
 app.get('/', fch.welcome);
 app.get("/index", fch.index);
 app.get("/lab", fch.laboratory);
+app.get("/note", fch.note);
 app.get("/about", fch.about);
 
 app.get('/backbone/todos', todo.todos);
@@ -84,6 +87,13 @@ app.get('/lab/carousel', lab.carousel);
 app.get('/lab/dialog', lab.dialog);
 app.get('/lab/drag', lab.drag);
 app.get('/lab/gallery', lab.gallery);
+
+app.get('/demo/float0', demo.float0);
+app.get('/demo/float1', demo.float1);
+app.get('/demo/float2', demo.float2);
+app.get('/demo/float3', demo.float3);
+app.get('/demo/float4', demo.float4);
+app.get('/demo/float5', demo.float5);
 
 
 http.createServer(app).listen(app.get('port'), function(){

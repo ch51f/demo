@@ -27,3 +27,12 @@ exports.laboratory = function (req, res, next) {
 		}
 	})
 }
+exports.note = function (req, res, next) {
+	res.render('note',{
+		title : 'CH51F\'s Note',
+		layout : 'layout/layout',
+		navbar : {
+			index : "note"
+		}
+	})
+}

@@ -1,0 +1,218 @@
+<%- partial("template/navbar", navbar)%>
+<%- partial("template/header")%>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<div id="affix" class="sidebar">
+				<ul class="nav navbar-m">
+					<li>
+						<a href="#n-html">Html</a>
+						<ul class="nav">
+							<li><a href="#n-html-url">URL</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#n-css">CSS</a>
+						<ul class="nav">
+							<li><a href="#n-css-clearfix">清除浮动</a></li>
+							<li><a href="#n-css-oocss">oocss个人见解</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#n-js">Javascript</a>
+						<ul class="nav">
+							<li><a href="#n-js-amdcmd">AMD和CMD</a></li>
+							<li><a href="#n-js-prototype">组合寄生式构造函数制作插件</a></li>
+							<li><a href="#n-js-fn">jQuery插件</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="section">
+				<h2 id="n-html">HTML</h2>
+				<p>关于html,html5的一些学习笔记</p>
+				<h3 id="n-html-url">URl</h3>
+				<p>URL（Uniform Resoure Locator：统一资源定位器）是WWW页的地址。如：scheme：//host：port/path?params</p>
+				<p>Internet资源类型（scheme）：指出WWW客户程序用来操作的工具。如：“http://”表示WWW服务器，“ftp://”表示FTP服务器，“new:”表示Newgroup新闻组。</p>
+				<p>服务器地址（host）：指出WWW页所在的服务器域名。</p>
+				<p>端口（port）：(非必须的，http请求默认80端口)，对某些资源的访问来说，需给出相应的服务器提供端口号。</p>
+				<p>路径（path）：指明服务器上某资源的位置（其格式与DOS系统中的格式一样，通常有目录/子目录/文件名这样结构组成）。与端口一样，路径并非总是需要的。</p>
+				<p>参数集（params）：访问请求参数。</p>
+			</div>
+			<div class="section">
+				<h2 id="n-css">CSS</h2>
+				<p>关于css,css3的学习笔记</p>
+				<h3 id="n-css-clearfix">清除浮动</h3>
+				<p>这里总结几种常见的清除浮动的方法。</p>
+				<h4>什么是浮动，为什么要清除浮动？</h4>
+				<p>当html元素定义float属性时，会使该html元素跳出布局，影响到页面上兄弟元素和父元素的布局。清除浮动，可以使页面元素向预期那样排列，而不会因为元素的上浮而打乱布局。<a href="/demo/float0" target="_blank">查看示例</a></p>
+				<h4><strong>方法1</strong>为父元素设置<code>height</code>清除浮动。</h4>
+				<p>浮动，会使父元素无法获取高度，而使布局错乱，为父元素手动添加高度，可以使父元素把布局撑开。</p>
+				<div>
+<pre><code class="html">&lt;style type="text/css"&gt;
+.parent{background: #999;border: 1px solid #f00;height: 200px;}
+.next{background: #999;border: 1px solid #f00;height: 150px;margin: 10px 0;}
+.left{width: 30%;height: 200px;float: left;background: #0f0;color: #fff;}
+.right{width: 30%;height: 200px;float: right;background: #0f0;color: #fff;}
+&lt;/style&gt;
+&lt;div class="parent"&gt;parent
+	&lt;div class="left"&gt;left&lt;/div&gt;
+	&lt;div class="right"&gt;right&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="next"&gt;next&lt;/div&gt;</code></pre>
+				</div>
+				<p><a href="/demo/float1" target="_blank">查看示例</a>，该方法使用于高度确定的情况下，不灵活不推荐使用。</p>
+				<h4><strong>方法2</strong>为父元素设置<code>overflow</code>清除浮动。</h4>
+				<p>为浮动元素的父元素设置<code>overflow:hidden;</code>可以清除浮动。</p>
+				<div>
+<pre><code class="css">&lt;style type="text/css"&gt;
+.parent{background: #999;border: 1px solid #f00;width: 100%;overflow: hidden;}
+.next{background: #999;border: 1px solid #f00;height: 150px;margin: 10px 0;}
+.left{width: 30%;height: 200px;float: left;background: #0f0;color: #fff;}
+.right{width: 30%;height: 200px;float: right;backgrond: #0f0;color: #fff;}
+&lt;/style&gt;
+&lt;div class="parent"&gt;parent
+	&lt;div class="left"&gt;left&lt;/div&gt;
+	&lt;div class="right"&gt;right&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="next"&gt;next&lt;/div&gt;</code></pre>
+				</div>
+				<p><a href="/demo/float2" target="_blank">查看示例</a>，需要注意的是<code>overflow:hidden;</code>会使元素超出部分隐藏，因此需要要父元素设置宽度，同时由于高度不确定不能设置高度。同时，如果父元素不能定义了<code>position</code>属性</p>
+				<h4><strong>方法3</strong>在浮动元素末尾添加<code>&lt;div class="clear"&gt;&lt;/div&gt;</code></h4>
+				<p>在每次浮动调用的末尾添加一个DIV，类名clear,在属性中设置<code>clear: both;</code>来清除浮动。</p>
+				<div>
+<pre><code>&lt;style type="text/css"&gt;
+.clear{clear: both;}
+.parent{background: #999;border: 1px solid #f00;}
+.next{background: #999;border: 1px solid #f00;height: 150px;margin: 10px 0;}
+.left{width: 30%;height: 200px;float: left;background: #0f0;color: #fff;}
+.right{width: 30%;height: 200px;float: right;backgrond: #0f0;color: #fff;}
+&lt;/style&gt;
+&lt;div class="parent"&gt;parent
+	&lt;div class="left"&gt;left&lt;/div&gt;
+	&lt;div class="right"&gt;right&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="next"&gt;next&lt;/div&gt;</code></pre>
+				</div>
+				<p><a href="/demo/float3" target="_blank">查看示例</a>该方法，每次使用浮动都会在末尾添加一个空的div，导致页面出现很多不必要div。</p>
+				<h4><strong>方法4</strong>父元素也使用浮动</h4>
+				<p>让父元素也浮动起来，使其和子元素变成一个整体。</p>
+				<div>
+<pre><code>&lt;style type="text/css"&gt;
+.parent{background: #999;border: 1px solid #f00;float: left;}
+.next{background: #999;border: 1px solid #f00;height: 150px;margin: 10px 0;}
+.left{width: 30%;height: 200px;float: left;background: #0f0;color: #fff;}
+.right{width: 30%;height: 200px;float: right;backgrond: #0f0;color: #fff;}
+&lt;/style&gt;
+&lt;div class="parent"&gt;parent
+	&lt;div class="left"&gt;left&lt;/div&gt;
+	&lt;div class="right"&gt;right&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="next"&gt;next&lt;/div&gt;</code></pre>
+				</div>
+				<p><a href="/demo/float4" target="_blank">查看示例</a>该方法会产生新的浮动问题。</p>
+				<h4><strong>方法5</strong>为父元素添加<code>class="clearfix"</code></h4>
+				<p>为父元素添加伪类<code>:after</code>来清除浮动。在父元素后添加一个隐藏元素，定义<code>clear: both;</code>来清除浮动。</p>
+				<div>
+<pre><code>&lt;style type="text/css"&gt;
+.clearfix:before,.clearfix:after {display: table;content: "";}
+.clearfix:after {clear: both;}
+.parent{background: #999;border: 1px solid #f00;}
+.next{background: #999;border: 1px solid #f00;height: 150px;margin: 10px 0;}
+.left{width: 30%;height: 200px;float: left;background: #0f0;color: #fff;}
+.right{width: 30%;height: 200px;float: right;backgrond: #0f0;color: #fff;}
+&lt;/style&gt;
+&lt;div class="parent"&gt;parent
+	&lt;div class="left"&gt;left&lt;/div&gt;
+	&lt;div class="right"&gt;right&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="next"&gt;next&lt;/div&gt;</code></pre>				
+				</div>
+				<p><a href="/demo/float5" target="_blank">查看示例</a>推荐使用该方法来清除浮动。</p>
+				<h3 id="n-css-oocss">oocss个人见解</h3>
+				<p>面向对象的CSS(Object Oriented CSS)的两个主要原则：1、结构与样式分离。2、容器和内容分离。</p>
+				<p>个人见解：1.建立组件库；2.使用一致的语义化样式；3.使用栅格；4.避免使用ID，后代选择器，类名附属元素名，!important；5.通过多个类来扩展元素样式；6.使用reset同意样式。</p>
+			</div>
+			<div class="section">
+				<h2 id="n-js">JavaScript</h2>
+				<p>关于javascript的一些学习笔记</p>
+				<h3 id="n-js-amdcmd">AMD和CMD</h3>
+				<h4>CMD(Common Module Definition)规范</h4>
+				<p>CommonJS有1个全局方法require()，用于加载模块，加载后就可以调用模块方法。</p>
+				<div>
+<pre><code>var math = require('math')
+math.add(2,3);</code></pre>
+				</div>
+				<p>CommonJS还有一个全局变量exports，用于导入模块的方法，通过它导入的方法就可供调用。</p>
+				<div>
+<pre><code>exports.add = function() {
+	var sum = 0, i = 0, args = arguments, l = args.length;
+	while(i &lt; l) {
+		sum += args[i++];
+	}
+	return sum;
+};
+</code></pre>
+				</div>
+				<p>CommonJS中,require是同步进行的，模块系统需要同步读取模块文件内容，编译执行得到接口。</p>
+				<h4>AMD(Asynchronous Module Definition)规范</h4>
+				<p>AMD定义一个define函数，它用来定义模块</p>
+				<div>
+<pre><code>define(id?,dependencies?,factory)</code></pre>
+				</div>
+				<p>三个参数，第一个id(可选)：定义一个字符串模块标识；第二个dependencies(可选)：成员依赖模块的id数组；第三个factory：回调函数，当依赖模块加载成功后执行，如果有返回值，导出一个完整的模块定义包模块名称。</p>
+				<div>
+<pre><code>define("add",["math"],function(math) {
+	return {
+		addTen: function(x) {
+			return math.add(x, 10);
+		}
+	}
+})</code></pre>
+				</div>
+				<p>如果这个模块并没有依赖，那么默认的依赖是["require", "exports", "module"]</p>
+				<div>
+<pre><code>define("add",function(require, exports) {
+	exports.addTen = function(x) {
+		return x + 10;
+	}
+})</code></pre>
+				</div>
+				<p>如果省略第一个参数，则会定义一个匿名模块,时间中一般使用这种方法。</p>
+				<div>
+<pre><code>define(["math"],function(math) {
+	return {
+		addTen: function(x) {
+			return math.add(x, 10);
+		}
+	}
+})</code></pre>
+				</div>
+				<p>常见的AMD模块化有：RequireJS、curl、lsjs、Dojo 1.7+</p>
+				<h3 id="n-js-prototype">javascript插件方式</h3>
+				<p>在javascript中就是定义一个构造函数。目前最流行的办法是采用组合寄生式构造函数，举个例子：</p>
+				<div>
+<pre><code>function demo(a, b) {
+	this.name = a;
+	this.age = b;
+	this.sayName = function() {
+		alert(this.name);
+	}
+	if(!demo.prototype.setName) {
+		demo.prototype.type = "DemoObject";
+		demo.prototype.setName = function(newName) {
+			this.name = newName;
+		}
+	}
+}
+var newDemo = new demo("test", 123)</code></pre>
+				</div>
+				<h3 id="n-js-fn">jQuery插件方式</h3>
+				<p>jQuery插件机制通过<code>jQuery.extend(object)</code>来扩展jQuery对象</p>
+				<p>用<code>jQuery.fn.extend(object)</code>扩展jQuery元素集来提供新的方法。</p>
+			</div>
+		</div>
+	</div>
+</div>

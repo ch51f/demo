@@ -25,5 +25,12 @@ requirejs(["jquery","bootstrap"], function($) {
 				bottom: 0
 			}
 		});
+		$(document).scroll(function() {
+			if($(this).scrollTop() >  460) {
+				$(".navbar-fixed-top").hide();
+			} else {
+				$(".navbar-fixed-top").show();
+			}
+		})
 	});
 });

@@ -59,9 +59,8 @@ body {
 .sidebar.affix {
 	position: fixed;
 	margin-top: 0;
-	top: 60px;
+	top: 0px;
 }
-
 .note {
 	margin: 30px auto;
 }

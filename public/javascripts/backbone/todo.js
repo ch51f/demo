@@ -20,7 +20,7 @@ define(["backbone", "todoTemplate"], function (Backbone, T) {
 				title: "empty todo...",
 				time: "",
 				t_order: Todos.nextOrder(),
-				done: false
+				done: falsez
 			}
 		},
 		toggle: function() {
@@ -80,7 +80,7 @@ define(["backbone", "todoTemplate"], function (Backbone, T) {
 			}
 		},
 		updateOnEnter: function(e) {
-			if(e.keypress == 13) this.close();
+			if(e.keyCode== 13) this.close();
 		},
 		clear: function() {
 			this.model.destroy({"id" : this.model.id});

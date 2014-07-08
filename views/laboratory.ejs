@@ -8,6 +8,7 @@
 					<li>
 						<a href="#image-demo">图片效果</a>
 						<ul class="nav">
+							<li><a href="#gallery">图片库</a></li>
 							<li><a href="#carousel">图片轮播效果</a></li>
 							<li><a href="#blindify">百叶窗效果</a></li>
 						</ul>
@@ -26,28 +27,27 @@
 			<div class="section">
 				<h2 id="image-demo">图片效果</h2>
 				<p>有关图片显示特效</p>
+				<h3 id="gallery">图片库</h3>
+				<p>浏览图片,<a href="/lab/gallery" target="_blank">效果演示</a></p>
+				<div>
+<pre><code class="javascript">$(element).gallery();</code></pre>
+				</div>
 				<h3 id="carousel">图片轮播效果</h3>
 				<p>图片滚动播放,<a href="/lab/carousel" target="_blank">效果演示</a></p>
 				<div>
-					<pre>
-						<code class='javascript'>
-$(element).carousel({
+<pre><code class='javascript'>$(element).carousel({
 	active : 0,			\\设置初始化时，显示图像序号。
 	width : 600,			\\设置初始化宽度。
 	height : 300,			\\设置初始化高度。
 	sliderVisibleTime : 1000,	\\设置图像显示时间。
 	animateSpeed : 800,		\\设置图像滚动时间。
 	direction : "top"		\\设置图片轮播方向。
-});
-						</code>
-					</pre>
+});</code></pre>
 				</div>
 				<h3 id="blindify">百叶窗效果</h3>
 				<p>图片播放模拟百叶窗切换,<a href="/lab/blindify" target="_blank">效果演示</a></p>
 				<div>
-					<pre>
-						<code class='javascript'>
-$(element).blindify({
+<pre><code class='javascript'>$(element).blindify({
 	numberOfBlinds : 20,		\\设置百叶窗条数。
 	color : "#000",			\\设置百叶窗条颜色。
 	margin : 3,			\\设置百叶窗条边框。
@@ -61,9 +61,7 @@ $(element).blindify({
 	orientation : "vertical",	\\方向“vertical”为横向，“horizontal”为竖向。
 	startClosed : false,		\\初始时是否关闭。
 	firstOpenDelay : 500		\\当startClosed为true时有效，初始关闭时间。
-});
-						</code>
-					</pre>
+});</code></pre>
 				</div>
 			</div>
 			<div class="section">
@@ -72,22 +70,17 @@ $(element).blindify({
 				<h3 id="drag">拖拽组件</h3>
 				<p>在页面上模拟一个可以自由拖着的元素,<a href="/lab/drag" target="_blank">效果演示</a></p>
 				<div>
-					<pre>
-						<code class='javascript'>
-$(element).carousel({
+<pre><code class='javascript'>$(element).carousel({
 	focuEl : null,		\\设置拖拽控制元素
 	callback : null,	\\callback方法,参数params{initDiffX,initDiffY,moveX,moveY},起始:X,Y,移动后:X,Y
 	dragDirection : "all",	\\设置拖拽方向"all","vertical","horizontal"
 	fixarea : null,		\\设置移动限制 [左,右,上,下]。
-});
-						</code>
-					</pre>
+});</code></pre>
 				</div>
 				<h3 id="dialog">弹出框组件</h3>
 				<p>页面遮罩弹出一个操作框,<a href="/lab/dialog" target="_blank">效果演示</a></p>
 				<div>
-					<pre>
-						<code class='javascript'>
+<pre><code class='javascript'>
 $(element).fDialog({
 	mask : true,				\\设置是否有遮罩层。
 	maskClose : true,			\\设置是否可以点击遮罩层关闭。
@@ -96,9 +89,7 @@ $(element).fDialog({
 	height : 300,				\\设置初始化高度。
 	content : "this is dialog content",	\\弹出层内容，可为html代码。
 	title : "dialog"			\\弹出层标题。
-});
-						</code>
-					</pre>
+});</code></pre>
 				</div>
 			</div>
 		</div>
